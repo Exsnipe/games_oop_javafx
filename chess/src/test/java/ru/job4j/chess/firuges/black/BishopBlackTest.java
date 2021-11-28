@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
-public class BishopBlackTest extends TestCase {
+public class BishopBlackTest {
 
     @Test
     public void testPosition() {
@@ -46,14 +46,9 @@ public class BishopBlackTest extends TestCase {
         assertArrayEquals(expected, result);
     }
 
-    @Test
+    @Test (expected = ImpossibleMoveException.class)
     public void testWayEx() throws ImpossibleMoveException {
         BishopBlack bishopBlack = new BishopBlack(Cell.C3);
-        try {
-            bishopBlack.way(Cell.E7);
-            Assert.fail("Expected ImpossibleMoveException");
-        } catch (ImpossibleMoveException ex) {
-            Assert.assertNotEquals("", ex.getMessage());
-        }
+        bishopBlack.way(Cell.E7);
     }
 }
